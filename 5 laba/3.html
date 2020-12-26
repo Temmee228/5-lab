@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html >
+<body>
+  <form>
+    <input type="text" id="1i">
+    <button type="button" id="b1">Копировать</button>
+    <br/>
+    <br/>
+    <input type="text" id="2i" readonly>
+    <button type="button" id="b2">Очистить</button>
+  </form>
+  <script>
+    var b1 = document.getElementById("b1");
+    console.log(b1)
+    b1.onclick = function() {
+      if (document.getElementById("1i").value === "") alert("ошибка!!!");
+      document.getElementById("2i").value = document.getElementById("1i").value;
+    }
+    var b2 = document.getElementById("b2");
+    b2.onclick = function() {
+      document.getElementById("1t").value = "";
+      document.getElementById("2t").value = "";
+    }
+  </script>
+</body>
+</html>

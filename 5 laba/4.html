@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+     table {
+         border-collapse: collapse;
+     }
+     td {
+         border: 1px solid black;
+         padding: 30px;
+         background-color: #808080;
+     }
+    </style>
+</head>
+<body>
+    <input type="text" id="1t">
+    <br/>
+    <input type="text" id="2t">
+    <br/>
+    <button type="button" id="b2">выполнить</button>
+    <div id = "div"></div>
+
+    <script>
+     var row = document.getElementById("1t");
+     var col = document.getElementById("2t");
+     var b = document.getElementById("b2");
+     var div = document.getElementById("div");
+
+     b.onclick = function (){
+     if ( row.value / 2  &&  col.value / 2 ){
+        var table = document.createElement("table");
+        div.appendChild(table);
+        for (let i = 0; i < row.value; ++i){
+            var tr = document.createElement("tr");
+            table.appendChild(tr);
+            for (let j = 0; j < col.value; ++j){
+                var td = document.createElement("td");
+                tr.appendChild(td);
+                td.innerHTML = Math.round(Math.random() * (10 - 1) + 1);
+            }
+        }
+     }
+     else alert("ошибка");
+     console.log(col.value + "   " + row.value); 
+    }
+    </script>
+
+</body>
+</html>
