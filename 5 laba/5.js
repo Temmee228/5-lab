@@ -20,8 +20,8 @@ equalButton.onclick = function() {
     }
 };
 function checkOperations(num){
-    if ( (document.form.textview.value.indexOf('1') !== -1          
-        || document.form.textview.value.indexOf('2') !== -1            
+    if ( (document.form.textview.value.indexOf('1') !== -1
+        || document.form.textview.value.indexOf('2') !== -1
         || document.form.textview.value.indexOf('3') !== -1
         || document.form.textview.value.indexOf('4') !== -1
         || document.form.textview.value.indexOf('5') !== -1
@@ -41,7 +41,7 @@ function checkOperations(num){
     }
 }
 function checkZero(num){
-    if ( document.form.textview.value.indexOf('1') !== -1                        
+    if ( document.form.textview.value.indexOf('1') !== -1
         || document.form.textview.value.indexOf('2') !== -1
         || document.form.textview.value.indexOf('3') !== -1
         || document.form.textview.value.indexOf('4') !== -1
