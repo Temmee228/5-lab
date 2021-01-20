@@ -1,38 +1,38 @@
-let array = ['top1', 'top2', 'top3', 'middle1', 'middle2', 'middle3', 'bottom1', 'bottom2', 'bottom3']; //массив id, куда можно сделать ход
+let array = ['top1', 'top2', 'top3', 'middle1', 'middle2', 'middle3', 'bottom1', 'bottom2', 'bottom3'];
 
 
 function randplace() {
-    let numb = Math.floor(Math.random()*array.length);     //генерация рандомного числа из кол-ва элементов + округление
-    document.getElementById(array[numb]).innerHTML = '×';     //вставляется крестик в id сгенерируемого индекса
-    array.splice(numb, 1);                                    //удаление задействованного id
+    let numb = Math.floor(Math.random()*array.length);
+    document.getElementById(array[numb]).innerHTML = '×';
+    array.splice(numb, 1);
 }
 
 
 function clicks (a) {
-    if (document.getElementById(a).innerHTML == '') {         //проверка поля на пустоту
-        document.getElementById(a).innerHTML = '○';          //вставляем ноль
+    if (document.getElementById(a).innerHTML == '') {
+        document.getElementById(a).innerHTML = '○';
     }
     else {
-        alert('error');                                       //выводим ошибку, если поле занято
-        return 0;                                             //завершение функции
+        setTimeout(() => alert('error'));
+        return 0;
     }
-    for (let i=0; i<array.length; i++) {                      //перебор массива с id, удаление занятых элементов
+    for (let i=0; i<array.length; i++) {
         if (array[i] == a) {
-            array.splice(i, 1);                               //удаление только 1 элемента массива, в который делается ход
+            array.splice(i, 1);
         }
     }
     if (win()) {
-        alert('Победа ноликов');
+        setTimeout(() => alert('Победа ноликов'));
         return 0;
     }
     if (array.length == 0) {
-        alert('Ничья');
-        return 0;                                                             //функция приниманиет значение 0 и завершается
+        setTimeout(() => alert('Ничья'));
+        return 0;
     }
     document.getElementById('step').innerHTML = '× is next';
-    randplace();                                                             //вызов функции хода компа
+    randplace();
     if (win()) {
-        alert('Победа крестиков');
+        setTimeout(() => alert('Победа крестиков'));
         return 0;
     }
     document.getElementById('step').innerHTML = '○ is next';
