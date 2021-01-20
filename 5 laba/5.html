@@ -1,129 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        *{
-            padding: 0%;
-            margin: 0%;
-            box-sizing: border-box;
-            -webkit-user-select: none;
-        }
-        div{
-            border: 2px solid rgb(102, 2, 77);
-            display: flex;
-            width: 300px;
-            height: 360px;
-            margin: auto;
-            overflow: hidden;
-        }
-        td div{
-            border: none;
-            display: flex;
-            width: 90%;
-            height: 90%;
-            margin: auto;
-			color: black;
-        }
-        table{
-            width: 300px;
-            height: 360px;
-            border-spacing: 10px;
-            background-color: black;
-        }
-        td{
-            font-size: 30px;
-            font-weight: 800;
-            text-align: center;
-            color:black;
-            background-color: white;
-            margin: 5px;
-            border: 1px solid rgb(249, 253, 7);
-          
-        }
-       
-        .blue{
-            background-color: rgb(26, 106, 224);
-			color: black;
-        }
-        .head{
-            display: flex;
-            width: 300px;
-            height: 37px;
-            font-size: 30px;
-            font-weight: 800;
-            border-bottom: 0px;
-            background-color: white;
-            margin-top: 50px;
-        }
-        .span{
-            display: flex;
-            margin-left: 270px;
-            border: 0px;
-            background-color: white;
-        }
-        input{
-            display: block;
-            width: 200%;
-            height: 100%;
-            background-color:  white;
-            border: 0px solid yellow;
-            color: rgb(46, 252, 200);
-            font-size: 30px;
-			color: black;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>Task 5</title>
+    <link rel="stylesheet" type="text/css" href="5.css">
 </head>
 <body>
-    <div class="head"><form><input id="text" type="text" value="" readonly></form></div>
-    <div class="body">
-    <table>
-        <tr> <td colspan="3" class="black"  onclick="C()">c</td> <td><div onclick="Vvod('/')">/</div></td> </tr>
-        <tr> <td><div onclick="Vvod('7')">7</div></td> <td><div onclick="Vvod('8')">8</div></td> 
-            <td><div  onclick="Vvod('9')">9</div></td> <td><div  onclick="Vvod('*')">*</div></td> </tr>
-            <tr> <td><div onclick="Vvod('4')">4</div></td> <td><div onclick="Vvod('5')">5</div></td> 
-                <td><div  onclick="Vvod('6')">6</div></td> <td><div  onclick="Vvod('-')">-</div></td> </tr>
-                <tr> <td><div onclick="Vvod('1')">1</div></td> <td><div onclick="Vvod('2')">2</div></td> 
-                    <td><div  onclick="Vvod('3')">3</div></td> <td><div  onclick="Vvod('+')">+</div></td> </tr>
-        <tr> <td colspan="3"  onclick="Vvod('0')">0</td> <td class="white"  onclick="Q()">=</td> </tr>
-    </table>
-    </div>
-
-<script>
-    var a = 0, operation = 0;
-   var text = document.getElementById("text");
-   function Vvod (n){
-       if ((n == "-" || n == "/" || n == "*" || n == "+") && (!operation)){
-       text.value = text.value + n;
-       console.log(text.value);
-       a = n;
-       ++operation;
-       }
-       else{
-           if (!(n == "-" || n == "/" || n == "*" || n == "+")){
-            text.value = text.value + n;
-            console.log(text.value);
-            a = n;
-           }
-       }
-   }
-   function C (){
-       text.value = "";
-       operation = 0;
-   }
-   function Q (){
-    console.log(text[0]);
-    operation = 0;
-       if (a == 0) text.value = "ERROR";
-       else {
-           if (text.value[0] == 0 || text.value[0] == "/" || text.value[0] == "*" || text.value[0] == "+" || text.value[0] == "-")  
-           text.value = "ERROR";
-           else {
-              text.value = eval(text.value);
-              console.log(text.value);
-           }
-       }
-   }
-</script>
-
+<form name="form">
+    <input  type="text" class="textview" name="textview" id="textview" value=" " disabled>
+    <input class="button" type="button" value="C" id="С" onclick="clean()">
+    <input class="button" type="button" value="/" id="del" onclick="checkOperations('/')">
+    <input class="button" type="button" value="7" id="7" onclick="insert(7)">
+    <input class="button" type="button" value="8" id="8" onclick="insert(8)">
+    <input class="button" type="button" value="9" id="9" onclick="insert(9)">
+    <input class="button" type="button" value="x" id="x" onclick="checkOperations('*')">
+    <input class="button" type="button" value="4" id="4" onclick="insert(4)">
+    <input class="button" type="button" value="5" id="5" onclick="insert(5)">
+    <input class="button" type="button" value="6" id="6" onclick="insert(6)">
+    <input class="button" type="button" value="–" id="-" onclick="checkOperations('-')">
+    <input class="button" type="button" value="1" id="1" onclick="insert(1)">
+    <input class="button" type="button" value="2" id="2" onclick="insert(2)">
+    <input class="button" type="button" value="3" id="3" onclick="insert(3)">
+    <input class="button" type="button" value="+" id="+" onclick="checkOperations('+')">
+    <input class="button" type="button" value="0" id="zero" onclick="checkZero(0)">
+    <input class="button" type="button" value="=" id="equal">
+</form>
+    <script type="text/javascript" src="5.js"></script>
 </body>
 </html>

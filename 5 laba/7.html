@@ -1,139 +1,27 @@
-<DOCTYPE HTML>
-<HTML>
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
-    <style>
-        table {
-            border-collapse: collapse;
-            margin: auto;
-        }
-        td {
-            border: 3px solid rgb(1, 42, 66);
-            width: 50px;
-            height: 50px;
-            background-color: orange;
-        }
-        td:hover{
-            background-color: rgb(255, 0, 0);
-        }
-    </style>
+    <title>Slojno</title>
+    <link rel="stylesheet" href="7.css">
 </head>
 <body>
-    <table>
-        <tr> <td clas="q" onclick="p(0)" id="0">   </td> <td clas="q" onclick="p(1)" id="1">   </td><td clas="q" onclick="p(2)" id="2"></td> </tr>
-        <tr> <td clas="q" onclick="p(3)" id="3">   </td> <td clas="q" onclick="p(4)" id="4">   </td><td clas="q" onclick="p(5)" id="5"></td> </tr>
-        <tr> <td clas="q" onclick="p(6)" id="6">   </td> <td clas="q" onclick="p(7)" id="7">   </td><td clas="q" onclick="p(8)" id="8"></td> </tr>
-    </table>
-<script>
-  var f0 = document.getElementById("0");
-  var f1 = document.getElementById("1");
-  var f2 = document.getElementById("2");
-  var f3 = document.getElementById("3");
-  var f4 = document.getElementById("4");
-  var f5 = document.getElementById("5");
-  var f6 = document.getElementById("6");
-  var f7 = document.getElementById("7");
-  var f8 = document.getElementById("8");
 
-   function zero(i){
-    if (i === 0) return f0.innerHTML = "O";
-          if (i === 1) return f1.innerHTML = "O";
-          if (i === 2) return f2.innerHTML = "O";
-          if (i === 3) return f3.innerHTML = "O";
-          if (i === 4) return f4.innerHTML = "O";
-          if (i === 5) return f5.innerHTML = "O";
-          if (i === 6) return f6.innerHTML = "O";
-          if (i === 7) return f7.innerHTML = "O";
-          if (i === 8) return f8.innerHTML = "O";
-   }
-   function krest(i){
-    if (i === 0) return f0.innerHTML = "X";
-          if (i === 1) return f1.innerHTML = "X";
-          if (i === 2) return f2.innerHTML = "X";
-          if (i === 3) return f3.innerHTML = "X";
-          if (i === 4) return f4.innerHTML = "X";
-          if (i === 5) return f5.innerHTML = "X";
-          if (i === 6) return f6.innerHTML = "X";
-          if (i === 7) return f7.innerHTML = "X";
-          if (i === 8) return f8.innerHTML = "X";
-   }
-   var q = document.getElementsByClassName("q");
-        var a = new Array (8);
-        for (let i = 0; i < 9; ++i) a[i] = 0;
-        console.log(a);
-        var cs = 0;
-        function p(n){
-            if (!a[n]){
-                a[n] = 1;
-                 if (cs < 4){
-                 while (1){
-                     let pc = Math.floor(Math.random() * (8 - 0) + 0);
-                     if (!a[pc]){
-                         a[pc] = 2
-                         break;
-                     }
-                 } 
-                }
-                 ++cs;
-                 for (let i = 0; i < 9; ++i){
-                     if (a[i] === 1)  zero(i);
-                     if (a[i] === 2)  krest(i);
-                 }
-             }console.log(a + "   " + cs);
-             if (cs >= 3){
-             if ((a[0] == 1 && a[3] == 1 && a[6] == 1) || (a[1] == 1 && a[4] == 1 && a[7] == 1) || (a[2] == 1 && a[5] == 1 && a[8] == 1) ||
-             (a[0] == 1 && a[1] == 1 && a[2] == 1) || (a[3] == 1 && a[4] == 1 && a[5] == 1) || (a[6] == 1 && a[7] == 1 && a[8] == 1) ||
-             (a[0] == 1 && a[4] == 1 && a[8] == 1) || (a[2] == 1 && a[4] == 1 && a[6] == 1)){
-                 alert("ПОБЕДА");
-                 for (let i = 0; i < 9; ++i) a[i] = 0 ;
-                 f0.innerHTML = "";
-                 f1.innerHTML = "";
-                 f2.innerHTML = "";
-                 f3.innerHTML = "";
-                 f4.innerHTML = "";
-                 f5.innerHTML = "";
-                 f6.innerHTML = "";
-                 f7.innerHTML = "";
-                 f8.innerHTML = "";
-                 cs = 0;
-             }
-             else{
-                if ((a[0] == 2 && a[3] == 2 && a[6] == 2) || (a[1] == 2 && a[4] == 2 && a[7] == 2) || (a[2] == 2 && a[5] == 2 && a[8] == 2) ||
-             (a[0] == 2 && a[1] == 2 && a[2] == 2) || (a[3] == 2 && a[4] == 2 && a[5] == 2) || (a[6] == 2 && a[7] == 2 && a[8] == 2) ||
-             (a[0] == 2 && a[4] == 2 && a[8] == 2) || (a[2] == 2 && a[4] == 2 && a[6] == 2)){
-                alert("ПОРАЖЕНИЕ");
-                 for (let i = 0; i < 9; ++i) a[i] = 0 ;
-                 f0.innerHTML = "";
-                 f1.innerHTML = "";
-                 f2.innerHTML = "";
-                 f3.innerHTML = "";
-                 f4.innerHTML = "";
-                 f5.innerHTML = "";
-                 f6.innerHTML = "";
-                 f7.innerHTML = "";
-                 f8.innerHTML = "";
-                 cs = 0;
-             }
-             else{ 
-                 if (cs >= 4){
-                 alert("НИЧЬЯ");
-                 for (let i = 0; i < 9; ++i) a[i] = 0 ;
-                 f0.innerHTML = "";
-                 f1.innerHTML = "";
-                 f2.innerHTML = "";
-                 f3.innerHTML = "";
-                 f4.innerHTML = "";
-                 f5.innerHTML = "";
-                 f6.innerHTML = "";
-                 f7.innerHTML = "";
-                 f8.innerHTML = "";
-                 cs = 0;
-                 }
-            }
-        }
-    }    
-}
-</script>
- </body>
+    <div class="content">
 
- </html>
+        <div class="currentPlayer">
+            <span>
+                <span id="curPlyr">X</span>
+            </span>
+        </div>
+
+        <div id="area">
+        </div>
+
+        <script src="7.js"></script>
+
+    </div>
+</body>
+
+
+</html>
