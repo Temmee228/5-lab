@@ -1,54 +1,44 @@
-* {margin: 0; padding: 0;}
-
-.content {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
     display: flex;
-    margin: 100px 50px 50px 50px;
-    font-family: sans-serif;
+    justify-content: center;
+    color: black;
 }
-
-#area {
-    width: 156px;
-    border: 1px solid #000;
-    margin: 0 auto;
-    font-size: 0;
+.container {
+    border: 1px solid black;
+    margin: 50px;
+    padding: 25px;
+    margin-top: 200px;
 }
-
-.cell {
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    display: inline-block;
-    font-size: 26px;
-    border: 1px solid #000;
+.step-do {
+    font-size: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+.clean {
     cursor: pointer;
-    vertical-align: middle;
-    transition: background .1s;
 }
-
-.cell:hover {
-    background-color: #F1F1F1;
+.clean:hover {
+    color: darkgrey;
 }
-
-.currentPlayer {
-    width: 140px;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
+.game-grid {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /*разделяет на 3 равные части*/
+    grid-gap: 1px;
+    margin-top: 15px;
+    background: black;
 }
-
-.stat {
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-}
-
-.stat table {
-    border-collapse: collapse;
-}
-
-.stat table, .stat th, .stat td {
-    border: 1px solid #000;
-    padding: 5px;
+.game-cell {
+    height: 90px;
+    width: 90px;
+    background: white;
+    cursor: pointer;
+    font-size: 60px;
     text-align: center;
+    padding-top: 8px;
 }

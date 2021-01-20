@@ -1,83 +1,93 @@
-var area = document.getElementById('area');
-var cell = document.getElementsByClassName('cell');
-var currentPlayer = document.getElementById('curPlyr');
-
-var player ="X";
-var winIndex = [
-    [1,2,3],
-    [4,5,6],
-    [7,8,9],
-    [1,4,7],
-    [2,5,8],
-    [3,6,9],
-    [1,5,9],
-    [3,5,7],
-
-];
-for(var i = 1; i <= 9; i++) {
-    area.innerHTML += "<div class='cell' pos=" + i +  "></div>";
-
-} for (var i = 0; i< cell.length; i++) {
-    cell[i].addEventListener('click', cellClick, false);
-}
-
-function cellClick() {
-
-    var data =[];
-
-    if(!this.innerHTML) {
-        this.innerHTML = player
-    }else {
-        alert("занято");
-        return;
-    }
-
-    for(var i in cell){
-        if(cell[i].innerHTML == player){
-            data.push(parseInt(cell[i].getAttribute('pos')));
-        }
-    }
-    
-      
+let array = ['top1', 'top2', 'top3', 'middle1', 'middle2', 'middle3', 'bottom1', 'bottom2', 'bottom3']; //массив id, куда можно сделать ход
 
 
-
-    if(checkWin(data)) {
-        restart("Победа:" + player);
-    }else {
-        var draw = true;
-        for(var i in cell) {
-            if(cell[i].innerHTML == '') draw = false;
-        }
-        if(draw) {
-            restart("Ничья");
-        }
-    }
- 
-    player = player == "X" ? "0" : "X";
-    currentPlayer.innerHTML = player.toUpperCase();
-}
-function checkWin(data) {
-    for(var i in winIndex) {
-        var win = true;
-        for(var j in winIndex[i]) {
-            var id = winIndex[i][j];
-            var ind = data.indexOf(id);
-
-            if(ind == -1) {
-                win = false
-            }
-        }
-
-        if(win) return true;
-    }
-    return false; 
+function randplace() {
+    let numb = Math.floor(Math.random()*array.length);     //генерация рандомного числа из кол-ва элементов + округление
+    document.getElementById(array[numb]).innerHTML = '×';     //вставляется крестик в id сгенерируемого индекса
+    array.splice(numb, 1);                                    //удаление задействованного id
 }
 
 
-function restart(text) {
-    alert(text);
-    for(var i=0; i < cell.length; i++) {
-        cell[i].innerHTML = '';
+function clicks (a) {
+    if (document.getElementById(a).innerHTML == '') {         //проверка поля на пустоту
+        document.getElementById(a).innerHTML = '○';          //вставляем ноль
     }
+    else {
+        alert('error');                                       //выводим ошибку, если поле занято
+        return 0;                                             //завершение функции
+    }
+    for (let i=0; i<array.length; i++) {                      //перебор массива с id, удаление занятых элементов
+        if (array[i] == a) {
+            array.splice(i, 1);                               //удаление только 1 элемента массива, в который делается ход
+        }
+    }
+    if (win()) {
+        alert('Победа ноликов');
+        return 0;
+    }
+    if (array.length == 0) {
+        alert('Ничья');
+        return 0;                                                             //функция приниманиет значение 0 и завершается
+    }
+    document.getElementById('step').innerHTML = '× is next';
+    randplace();                                                             //вызов функции хода компа
+    if (win()) {
+        alert('Победа крестиков');
+        return 0;
+    }
+    document.getElementById('step').innerHTML = '○ is next';
+}
+
+
+function clean () {
+    array = ['top1', 'top2', 'top3', 'middle1', 'middle2', 'middle3', 'bottom1', 'bottom2', 'bottom3'];
+    for (let i=0; i<array.length; i++) {
+        document.getElementById(array[i]).innerHTML = '';
+    }
+    document.getElementById('step').innerHTML = '○ is next';
+}
+
+
+function win() {
+    if (document.getElementById('top1').innerHTML != '' &&
+        document.getElementById('top1').innerHTML == document.getElementById('top2').innerHTML &&
+        document.getElementById('top2').innerHTML == document.getElementById('top3').innerHTML) {
+       return true;
+    }
+    if (document.getElementById('middle1').innerHTML !='' &&
+        document.getElementById('middle1').innerHTML == document.getElementById('middle2').innerHTML &&
+        document.getElementById('middle2').innerHTML == document.getElementById('middle3').innerHTML) {
+        return true;
+    }
+    if (document.getElementById('bottom1').innerHTML !='' &&
+        document.getElementById('bottom1').innerHTML == document.getElementById('bottom2').innerHTML &&
+        document.getElementById('bottom2').innerHTML == document.getElementById('bottom3').innerHTML) {
+        return true;
+    }
+    if (document.getElementById('top1').innerHTML !='' &&
+        document.getElementById('top1').innerHTML == document.getElementById('middle1').innerHTML &&
+        document.getElementById('middle1').innerHTML == document.getElementById('bottom1').innerHTML) {
+        return true;
+    }
+    if (document.getElementById('top2').innerHTML !='' &&
+        document.getElementById('top2').innerHTML == document.getElementById('middle2').innerHTML &&
+        document.getElementById('middle2').innerHTML == document.getElementById('bottom2').innerHTML) {
+        return true;
+    }
+    if (document.getElementById('top3').innerHTML !='' &&
+        document.getElementById('top3').innerHTML == document.getElementById('middle3').innerHTML &&
+        document.getElementById('middle3').innerHTML == document.getElementById('bottom3').innerHTML) {
+        return true;
+    }
+    if (document.getElementById('top1').innerHTML !='' &&
+        document.getElementById('top1').innerHTML == document.getElementById('middle2').innerHTML &&
+        document.getElementById('middle2').innerHTML == document.getElementById('bottom3').innerHTML) {
+        return true;
+    }
+    if (document.getElementById('top3').innerHTML !='' &&
+        document.getElementById('top3').innerHTML == document.getElementById('middle2').innerHTML &&
+        document.getElementById('middle2').innerHTML == document.getElementById('bottom1').innerHTML) {
+        return true;
+    }
+    return false;
 }
