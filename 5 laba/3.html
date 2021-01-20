@@ -13,13 +13,14 @@
     var b1 = document.getElementById("b1");
     console.log(b1)
     b1.onclick = function() {
-      if (document.getElementById("1i").value === "") alert("ошибка!!!");
+      if (document.getElementById("1i").value === "") alert("ошибка");
       document.getElementById("2i").value = document.getElementById("1i").value;
     }
     var b2 = document.getElementById("b2");
     b2.onclick = function() {
-      document.getElementById("1t").value = "";
-      document.getElementById("2t").value = "";
+      document.getElementById("1i").value = "";
+      document.getElementById("2i").value = "";
+      
     }
   </script>
 </body>
